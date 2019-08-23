@@ -66,8 +66,8 @@ async def on_message(message):
         print("$adminHello command invoked")
         for x in userArray:
             if message.author.id == x.ID:
-                response = random.choice(x.phrases) + "\nIs Admin: " + str(isAdmin(x)) + \
-                           "\nDiscord Account ID: " + str(x.ID) + "\nName: " + x.name
+                response = "```" + random.choice(x.phrases) + "\nIs Admin: " + str(isAdmin(x)) + \
+                           "\nDiscord Account ID: " + str(x.ID) + "\nName: " + x.name + "```"
                 await message.channel.send(response)
                 break
 
