@@ -1,0 +1,15 @@
+{"users": [
+    {
+      "name": "Daniel Kuzmin",
+      "ID": 301942632282587136,
+      "admin": true,
+      "phrases": ["Test1","You're cool"]
+    },
+
+    {
+      "name": "Test User",
+      "ID": 605526054458884107,
+      "admin": false,
+      "phrases": ["Test2","You're not an admin"]
+    }
+]}
