@@ -15,13 +15,14 @@ TOKEN = credentials.token
 #GUILD - The name of the server
 GUILD = discord.guild
 #Version Number
-VERSION = "0.5 - BETA BUILD"
+VERSION = "v0.5 - BETA BUILD"
 
 helpBlock = "```-------------------------adminBot HELP-------------------------" \
             "\n$adminHello - Prints one of your custom messages at random" \
             "\n$echo - Sends a message in a channel on a server, Ex: $echo Hi everyone!" \
             "\n$mute - Mutes the tagged user and prevents them from talking in VC for the given " \
             "amount of time in minutes Ex: $mute @Holland Oates#3521 5" \
+            "\n$about - Prints information about the current version of the bot" \
             "\n$help - Prints this help block" \
             "```"
 #This string is sent when a user tries to DM the bot a command that can't be used from DMs
@@ -74,6 +75,12 @@ async def on_message(message):
     if message.content == '$help':
         print("$help command invoked, printing help block")
         await message.channel.send(helpBlock)
+
+    # -----ABOUT COMMAND-----
+    if message.content == '$about':
+        print("&about command invoked")
+        message = "AdminBot" + VERSION + " https://github.com/danielkuzmin"
+        await message.channel.send(message)
 
     #-----ECHO COMMAND-----
     #Echos a message given by a user into another channel (checks for admin rights first)
