@@ -46,3 +46,8 @@ Usage example:
 ```
 $echo your message here
 ```
+### $mute
+Mutes a user for the given amount of minutes.
+```
+$mute @Holland Oates 2
+```
