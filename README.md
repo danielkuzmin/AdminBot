@@ -38,8 +38,11 @@ $ nohup python3 main.py&
 This will start the bot. You can close the terminal window, or the SSH window, and the bot will keep running as long as the machine doesn't shut down or lose connection to the internet.
 ## Using the Bot
 This bot uses the prefix '$' and comes with the following commands:
-### Command List
-```
-$adminHello
-```
+### $adminHello
 Prints one of your custom messages at random, as well as your discord ID, name, and whether or not you're an admin.
+### $echo
+Sends a message into the selected text channel.
+Usage example:
+```
+$echo your message here
+```
