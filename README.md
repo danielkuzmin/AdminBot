@@ -1,4 +1,4 @@
-# adminBot
+# AdminBot
 This bot provides quality of life features for Discord mod admins. Written in Python.
 ## Getting Started
 If you'd like to host the bot yourself, these instructions will show you how to get it running on a Linux machine in the background.
