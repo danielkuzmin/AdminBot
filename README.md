@@ -47,7 +47,9 @@ Usage example:
 $echo your message here
 ```
 ### $mute
-Mutes a user for the given amount of minutes.
+Mutes a user for the given amount of minutes. Usage:
 ```
 $mute @Holland Oates 2
 ```
+### $help
+Sends a message containing the bot's command list and a short description with usages of each command to the channel it was invoked in.
