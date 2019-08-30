@@ -12,7 +12,7 @@ print(f'AdminBot is connecting to servers...')
 # GUILD - The name of the server
 GUILD = discord.guild
 # Version Number
-VERSION = "v0.5 - BETA BUILD"
+VERSION = "v0.9 - ALPHA BUILD"
 
 helpBlock = "```-------------------------adminBot HELP-------------------------" \
             "\n$adminHello - Prints one of your custom messages at random" \
@@ -32,23 +32,20 @@ client = discord.Client()
 
 # Returns true if the user is an admin, false if they aren't
 def is_admin(user):
-    if user.admin:
-        return True
-    else:
-        return False
+    return user.admin
 
 # Initial bot joining Discord (only prints to console)
 @client.event
 async def on_ready():
+    # Show: playing "say $help"
+    game = discord.Game("say $help")
+    await client.change_presence(status=discord.Status.online, activity=game)
+
     servers = list(client.guilds)
     print("Connected to", str(len(client.guilds)) + " servers:")
     for x in range(len(servers)):
         print(' ', servers[x-1].name)
 
-# Show: playing "say $help"
-@client.event
-async def wait_until_login():
-    await client.change_presence(game=discord.Game(name="$help"))
 
 # Server join message
 @client.event
@@ -141,7 +138,8 @@ async def on_message(message):
                                 await selected_channel.send(final_message)
                             except:
                                 print('Invalid input')
-                                await message.channel.send("```Invalid usage, please enter the number of a text channel.```")
+                                m = "```Invalid usage, please enter the number of a text channel.```"
+                                await message.channel.send(m)
 
     # -----MUTE COMMAND-----
     # Adds a "muted" role to the target for a specified amount of time (checks for admin rights first)
