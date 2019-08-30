@@ -1,5 +1,4 @@
 # This is the main bot file, contains the code of all of the commands
-import os
 import random
 import discord
 
@@ -86,7 +85,7 @@ async def on_message(message):
     # Echos a message given by a user into another channel (checks for admin rights first)
     if message.content.startswith("$echo") and not message.author == client.user:
         # If message came from a DM
-        if message.guild == None:
+        if message.guild is None:
             await message.channel.send(noDM)
         # If the message came from a server's channel
         else:
@@ -103,27 +102,27 @@ async def on_message(message):
                             await message.channel.send("```Usage: $echo followed by the message you'd like to send ```")
                             break
                         # Create the final string to echo into the channel
-                        finalMessage = ''
-                        iterWords = iter(message.content.split(' '))
-                        next(iterWords)
-                        for word in iterWords:
-                            finalMessage = finalMessage + word + ' '
+                        final_message = ''
+                        iter_words = iter(message.content.split(' '))
+                        next(iter_words)
+                        for word in iter_words:
+                            final_message = final_message + word + ' '
 
                         await message.channel.send("Which channel would you like to send this message to?")
-                        thisGuild = message.guild
-                        textChannelCount = 1
-                        textChannels = []
-                        for channel in thisGuild.channels:
+                        this_guild = message.guild
+                        text_channel_count = 1
+                        text_channels = []
+                        for channel in this_guild.channels:
                             if str(channel.type) == "text":
-                                cName = "```" + str(textChannelCount) + ' - ' + str(channel.name) + "```"
-                                await message.channel.send(cName)
-                                textChannels.append([textChannelCount, channel])
-                                textChannelCount = textChannelCount + 1
+                                c_name = "```" + str(text_channel_count) + ' - ' + str(channel.name) + "```"
+                                await message.channel.send(c_name)
+                                text_channels.append([text_channel_count, channel])
+                                text_channel_count = text_channel_count + 1
 
                         # Function to find the channel given the key
-                        def findChannel(channels, key):
+                        def find_channel(channels, key):
                             index = 0
-                            for channel in channels:
+                            for c in channels:
                                 if channels[index][0] == key:
                                     return channels[index][1]
                                 else:
@@ -137,9 +136,9 @@ async def on_message(message):
                         msg = await client.wait_for('message', check=check)
                         if msg:
                             try:
-                                selectedChannel = findChannel(textChannels, int(msg.content))
-                                print("Sending message:", finalMessage)
-                                await selectedChannel.send(finalMessage)
+                                selected_channel = find_channel(text_channels, int(msg.content))
+                                print("Sending message:", final_message)
+                                await selected_channel.send(final_message)
                             except:
                                 print('Invalid input')
                                 await message.channel.send("```Invalid usage, please enter the number of a text channel.```")
@@ -148,7 +147,7 @@ async def on_message(message):
     # Adds a "muted" role to the target for a specified amount of time (checks for admin rights first)
     if message.content.startswith("$mute") and not message.author == client.user:
         # If message came from a DM
-        if message.guild == None:
+        if message.guild is None:
             await message.channel.send(noDM)
         # If the message came from a server's channel
         else:
@@ -159,8 +158,8 @@ async def on_message(message):
                         await message.channel.send(noAdmin)
                     else:
                         try:
-                            muteTarget = message.content.split(' ')[1]
-                            muteTime = message.content.split(' ')[2]
+                            mute_target = message.content.split(' ')[1]
+                            mute_time = message.content.split(' ')[2]
                         except:
                             await message.channel.send("```Usage: $mute followed by the person you'd "
                                                        "like to mute followed by the number of minutes"
