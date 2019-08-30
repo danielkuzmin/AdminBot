@@ -41,10 +41,10 @@ def is_admin(user):
 # Initial bot joining Discord (only prints to console)
 @client.event
 async def on_ready():
-  servers = list(client.guilds)
-  print("Connected to", str(len(client.guilds)) + " servers:")
-  for x in range(len(servers)):
-    print(' ', servers[x-1].name)
+    servers = list(client.guilds)
+    print("Connected to", str(len(client.guilds)) + " servers:")
+    for x in range(len(servers)):
+        print(' ', servers[x-1].name)
 
 # Show: playing "say $help"
 @client.event
