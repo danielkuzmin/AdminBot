@@ -18,7 +18,7 @@ To add users with their own phrases and permissions, you'll need to edit the use
 {
       "name": "Firstname Lastname",
       "ID": IDNumber,
-      "admin": true (or false),
+      "admin": true,
       "phrases": ["Test1","You're cool"]
 },
 ```
