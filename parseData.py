@@ -1,10 +1,10 @@
-#This file parses the data from users.json and creates an array of objects
+# This file parses the data from users.json and creates an array of objects
 import json
 
-#Array of user objects
+# Array of user objects
 userArray = []
 
-#User object
+# User object
 class user:
     def __init__(self, name, ID, admin, phrases):
         self.name = name;
